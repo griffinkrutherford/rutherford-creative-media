@@ -36,7 +36,7 @@ h1 {
 h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #9E8867;
+    color: #3d5675;
 }
 
 h3 {
@@ -93,28 +93,28 @@ p {
 }
 
 .placeholder-art {
-    background: linear-gradient(135deg, #E3CAA6 0%, #9E8867 50%, #E3CAA6 100%);
+    background: linear-gradient(135deg, #697d96 0%, #3d5675 50%, #697d96 100%);
     background-size: 300% 300%;
     animation: gradientShift 8s ease infinite;
 }
 
 .placeholder-art[data-art="1"] {
-    background: linear-gradient(45deg, #E3CAA6, #9E8867, #D4B896);
+    background: linear-gradient(45deg, #697d96, #3d5675, #5a6e87);
     background-size: 300% 300%;
 }
 
 .placeholder-art[data-art="2"] {
-    background: radial-gradient(circle, #9E8867, #E3CAA6, #C4A882);
+    background: radial-gradient(circle, #3d5675, #697d96, #4a607a);
     background-size: 300% 300%;
 }
 
 .placeholder-art[data-art="3"] {
-    background: linear-gradient(135deg, #D4B896, #E3CAA6, #9E8867);
+    background: linear-gradient(135deg, #5a6e87, #697d96, #3d5675);
     background-size: 300% 300%;
 }
 
 .placeholder-art[data-art="4"] {
-    background: conic-gradient(from 0deg, #E3CAA6, #9E8867, #D4B896, #E3CAA6);
+    background: conic-gradient(from 0deg, #697d96, #3d5675, #5a6e87, #697d96);
     background-size: 300% 300%;
 }
 
@@ -197,7 +197,7 @@ p {
 
 .nav-brand h1 {
     font-size: 1.5rem;
-    color: #9E8867;
+    color: #3d5675;
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -209,13 +209,13 @@ p {
 
 .nav-links a {
     text-decoration: none;
-    color: #9E8867;
+    color: #3d5675;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #E3CAA6;
+    color: #697d96;
 }
 
 .nav-toggle {
@@ -252,7 +252,7 @@ p {
 .hero-title {
     font-size: 4rem;
     font-weight: 800;
-    color: #9E8867;
+    color: #3d5675;
     margin-bottom: 0.5rem;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -262,7 +262,7 @@ p {
 .hero-subtitle-large {
     font-size: 2rem;
     font-weight: 600;
-    color: #E3CAA6;
+    color: #697d96;
     margin-bottom: 1rem;
     line-height: 1.3;
 }
@@ -329,7 +329,7 @@ p {
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #E3CAA6;
+    color: #697d96;
 }
 
 .stat-label {
