@@ -14,6 +14,10 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.send_header('Pragma', 'no-cache')
         self.send_header('Expires', '0')
+        # Add additional headers for static assets
+        if self.path.endswith(('.js', '.css')):
+            self.send_header('ETag', '')
+            self.send_header('Last-Modified', '')
         super().end_headers()
 
 def main():

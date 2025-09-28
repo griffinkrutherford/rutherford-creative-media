@@ -327,4 +327,7 @@ window.addEventListener('load', function() {
             }
         });
     }, 500);
+
+    // Force cache refresh
+    console.log('Rutherford Creative Media - Script loaded successfully');
 });
