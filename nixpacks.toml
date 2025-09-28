@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python3"]
+
+[phases.build]
+cmds = ["echo 'No build step required for static site'"]
+
+[start]
+cmd = "python3 server.py"
