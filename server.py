@@ -7,7 +7,7 @@ import sys
 # Change to the directory where the script is located
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-PORT = 3000
+PORT = int(os.environ.get('PORT', 3000))
 
 class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -18,7 +18,7 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     try:
-        with socketserver.TCPServer(("", PORT), CustomHTTPRequestHandler) as httpd:
+        with socketserver.TCPServer(("0.0.0.0", PORT), CustomHTTPRequestHandler) as httpd:
             print(f"🚀 Rutherford Creative Media website is now running!")
             print(f"📱 Open your browser and visit: http://localhost:{PORT}")
             print(f"🛑 Press Ctrl+C to stop the server")
