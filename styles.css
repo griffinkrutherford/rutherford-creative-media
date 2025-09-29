@@ -1019,3 +1019,287 @@ p {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Rutherford & Company Section */
+.rc-section {
+    background: #ffffff;
+    padding: 80px 0;
+}
+
+/* Hero */
+.rc-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rc-tag {
+    color: var(--rcm-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.rc-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--rcm-text);
+    margin-bottom: 2rem;
+}
+
+.rc-intro {
+    margin-bottom: 2rem;
+}
+
+.rc-intro p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--rcm-text);
+    margin-bottom: 1rem;
+}
+
+.rc-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Value Strip */
+.rc-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 5rem;
+}
+
+.rc-value-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.rc-value-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rc-value-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.rc-value-card p {
+    font-size: 0.875rem;
+    color: var(--rcm-muted);
+    line-height: 1.5;
+}
+
+/* Offerings */
+.rc-offerings-header {
+    margin-bottom: 2rem;
+}
+
+.rc-offerings-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.rc-offerings-header p {
+    color: var(--rcm-muted);
+    font-size: 1rem;
+}
+
+.rc-offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.rc-offering-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.rc-offering-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rc-offering-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.75rem;
+}
+
+.rc-offering-card ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.rc-offering-card li {
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.rc-outcome {
+    font-size: 0.875rem;
+    color: var(--rcm-muted);
+    padding-top: 0.75rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Who We Serve */
+.rc-who-we-serve {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.rc-who-we-serve h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.rc-who-we-serve p {
+    color: var(--rcm-text);
+    line-height: 1.6;
+}
+
+/* How We Work */
+.rc-how-we-work {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.rc-step {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.rc-step-num {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rcm-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.25rem;
+}
+
+.rc-step h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.rc-step p {
+    font-size: 0.875rem;
+    color: var(--rcm-text);
+    line-height: 1.5;
+}
+
+/* Contact */
+.rc-contact {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.rc-contact h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.rc-contact p {
+    color: var(--rcm-text);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.rc-contact-ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Attribution */
+.rc-attribution {
+    text-align: center;
+}
+
+.rc-attribution p {
+    font-size: 0.875rem;
+    color: var(--rcm-muted);
+}
+
+/* Tertiary Button Style */
+.btn-tertiary {
+    background: transparent;
+    color: var(--rcm-muted);
+    border: 1px solid #e5e7eb;
+    font-weight: 500;
+}
+
+.btn-tertiary:hover {
+    background: #f9fafb;
+    color: var(--rcm-text);
+    border-color: #d1d5db;
+}
+
+/* Responsive Design for RC Section */
+@media (max-width: 768px) {
+    .rc-title {
+        font-size: 2.25rem;
+    }
+
+    .rc-intro p {
+        font-size: 1rem;
+    }
+
+    .rc-offerings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rc-how-we-work {
+        grid-template-columns: 1fr;
+    }
+
+    .rc-values {
+        grid-template-columns: 1fr;
+    }
+
+    .rc-ctas,
+    .rc-contact-ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rc-ctas .btn,
+    .rc-contact-ctas .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
