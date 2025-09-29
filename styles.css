@@ -197,7 +197,7 @@ p {
     color: var(--rcm-surface);
 }
 
-.hero::before {
+/* .hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -212,7 +212,7 @@ p {
     .hero::before {
         background: rgba(15, 15, 18, 0.62);
     }
-}
+} */
 
 .hero.has-bg {
     background: var(--rcm-bg) url('images/cover-photo.jpg') center center / cover no-repeat;
