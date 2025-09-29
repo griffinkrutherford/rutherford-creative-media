@@ -1020,6 +1020,244 @@ p {
     transform: translateY(0);
 }
 
+/* Creative North Star Section */
+.north-star-section {
+    background: #ffffff;
+    padding: 60px 0 80px 0;
+}
+
+.north-star-header {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+}
+
+.north-star-tag {
+    color: var(--rcm-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.north-star-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--rcm-text);
+    margin-bottom: 1rem;
+}
+
+.north-star-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--rcm-text);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.north-star-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.north-star-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.north-star-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.north-star-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.25rem;
+}
+
+.north-star-card p {
+    font-size: 0.875rem;
+    color: var(--rcm-text);
+    line-height: 1.5;
+}
+
+/* Responsive Design for North Star Section */
+@media (max-width: 768px) {
+    .north-star-title {
+        font-size: 2rem;
+    }
+
+    .north-star-intro {
+        font-size: 1rem;
+    }
+
+    .north-star-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Studio Principles Section */
+.studio-principles-section {
+    background: #ffffff;
+    padding-bottom: 60px;
+}
+
+.studio-principles-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.75rem;
+}
+
+.studio-principles-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    max-width: 800px;
+}
+
+.studio-principles-list li {
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Studio Principles */
+@media (max-width: 768px) {
+    .studio-principles-section {
+        padding-bottom: 40px;
+    }
+}
+
+/* Platforms Section */
+.platforms-section {
+    background: #ffffff;
+    padding: 60px 0;
+}
+
+.platforms-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rcm-text);
+    margin-bottom: 1.5rem;
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.platform-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.platform-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.platform-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    margin-bottom: 0.5rem;
+}
+
+.platform-card p {
+    color: var(--rcm-text);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.platform-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--rcm-text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-block;
+    margin-top: 0.75rem;
+}
+
+.platform-link:hover {
+    color: var(--rcm-accent);
+}
+
+/* Responsive Design for Platforms */
+@media (max-width: 768px) {
+    .platforms-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* R&C Bridge Section */
+.rc-bridge-section {
+    background: #ffffff;
+    padding: 24px 0;
+}
+
+.rc-bridge-text {
+    font-size: 0.875rem;
+    color: var(--rcm-muted);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Bridge Section */
+@media (max-width: 768px) {
+    .rc-bridge-section {
+        padding: 20px 0;
+    }
+}
+
+/* Works Snapshot Section */
+.works-snapshot-section {
+    background: #ffffff;
+    padding: 60px 0;
+}
+
+.works-snapshot-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--rcm-text);
+    margin-bottom: 1rem;
+}
+
+.works-snapshot-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+}
+
+.works-snapshot-list li {
+    color: var(--rcm-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsive Design for Works Snapshot */
+@media (max-width: 768px) {
+    .works-snapshot-section {
+        padding: 40px 0;
+    }
+
+    .works-snapshot-title {
+        font-size: 1.75rem;
+    }
+}
+
 /* Rutherford & Company Section */
 .rc-section {
     background: #ffffff;
