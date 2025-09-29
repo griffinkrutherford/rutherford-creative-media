@@ -284,6 +284,17 @@ p {
     color: var(--rcm-surface);
 }
 
+.hero-credit {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 3;
+    font-size: 0.75rem;
+    color: var(--rcm-surface);
+    opacity: 0.8;
+    font-family: 'Inter', sans-serif;
+}
+
 .hero-tagline {
     font-size: 1.6rem;
     font-weight: 500;
@@ -314,7 +325,7 @@ p {
     margin: .5rem auto 1rem;
     opacity: .9;
     font-size: 1.25rem;
-    color: #5a6c7d;
+    color: var(--rcm-surface);
     line-height: 1.6;
 }
 
