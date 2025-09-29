@@ -215,7 +215,7 @@ p {
 }
 
 .hero.has-bg {
-    background: var(--rcm-bg) url('/public/images/hero.webp') center center / cover no-repeat;
+    background: var(--rcm-bg) url('images/cover-photo.jpg') center center / cover no-repeat;
 }
 
 .hero-background {
@@ -224,7 +224,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #adb5bd url('/public/images/hero.webp') center center / cover no-repeat;
+    background: #adb5bd url('images/cover-photo.jpg') center center / cover no-repeat;
     z-index: 0;
 }
 
