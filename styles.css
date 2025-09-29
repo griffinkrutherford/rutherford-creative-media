@@ -1192,6 +1192,24 @@ p {
     color: var(--rcm-accent);
 }
 
+.platform-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.platform-link-secondary {
+    font-size: 0.875rem;
+    color: var(--rcm-muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-block;
+}
+
+.platform-link-secondary:hover {
+    color: var(--rcm-text);
+}
+
 /* Responsive Design for Platforms */
 @media (max-width: 768px) {
     .platforms-grid {
