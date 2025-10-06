@@ -1,8 +1,11 @@
 [phases.setup]
-nixPkgs = ["python3"]
+nixPkgs = ["nodejs", "npm"]
+
+[phases.install]
+cmds = ["npm ci"]
 
 [phases.build]
-cmds = ["echo 'No build step required for static site'"]
+cmds = ["npm run build"]
 
 [start]
-cmd = "python3 server.py"
+cmd = "npm start"
