@@ -1,0 +1,15 @@
+# Image Assets Directory
+
+## TODO: Replace with actual images
+
+- `atl-cover.png` - A Tactical Life memoir cover (recommended: 300x400px)
+- `elias-series.png` - Elias Vance thriller series cover (300x400px)
+- `adams-night-cover.png` - Adam's Night literary fiction cover (300x400px)
+- `malestrum-tile.png` - Malestrum podcast logo/tile (300x300px)
+
+## Optimization Tips
+
+- Use WebP format with JPG/PNG fallbacks for best performance
+- Compress images using tinypng.com or squoosh.app
+- Consider 2x versions for high-DPI displays
+- Alt text is already configured in HTML
