@@ -3,35 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&C Consulting | Rutherford Creative Media</title>
+    <title>R&C Consulting — AI Strategy & Implementation</title>
+    <meta name="description" content="R&C Consulting provides AI strategy, storytelling, and implementation for modern workflows. Led by Barry Rutherford and Griffin Rutherford.">
+    <meta property="og:title" content="R&C Consulting">
+    <meta property="og:description" content="AI strategy, storytelling, and implementation for modern workflows.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rutherfordcreativemedia.com/rc-consulting">
+    <meta property="og:image" content="/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=1759096751">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="favicon-16x16.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon-32x32.svg">
+    <link rel="shortcut icon" href="favicon.svg">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
+                <a href="/" style="text-decoration: none; color: inherit;">
                     <span class="brand-text">Rutherford Creative Media</span>
                 </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#our-platforms" class="nav-link">Projects</a></li>
+                <li><a href="/rc-consulting.html" class="nav-link">R&C</a></li>
+                <li><a href="/#works" class="nav-link">Works</a></li>
+                <li><a href="/#team" class="nav-link">Team</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <main style="padding-top: 100px;">
-        <section class="container" style="max-width: 800px; padding: 2rem;">
-            <header style="margin-bottom: 3rem; text-align: center;">
+    <!-- Hero Section -->
+    <header class="hero" style="background: var(--rcm-bg); color: var(--rcm-surface); min-height: 60vh;">
+        <div class="hero-content">
+            <div class="hero-text">
                 <h1>R&C Consulting</h1>
-            </header>
+                <p class="hero-tag">AI strategy, storytelling, and implementation for modern workflows.</p>
+                <p class="hero-sub">We turn strategy into shipped capability. R&C blends Barry Rutherford's decades of executive leadership with Griffin Rutherford's Computer Science rigor to deliver practical AI systems that work in your day-to-day.</p>
+                <div class="hero-ctas">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#contact" class="btn btn-secondary">Start a Conversation</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-            <article style="line-height: 1.8; font-size: 1.1rem;">
-                <p>We help teams apply AI to real work: fast prototypes, vibe coding, and practical automation. Email: <a href="mailto:info@rutherfordcreativemedia.com" style="color: #3498db; text-decoration: none;">info@rutherfordcreativemedia.com</a></p>
-            </article>
+    <main>
+        <!-- Services -->
+        <section id="services" class="platforms-section">
+            <div class="container">
+                <h2 class="platforms-title">Our Services</h2>
+                <div class="platforms-grid">
+                    <!-- Strategy -->
+                    <div class="platform-card">
+                        <h3>Strategy</h3>
+                        <ul style="list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0;">
+                            <li>AI roadmaps and implementation planning</li>
+                            <li>Tool evaluation and vendor selection</li>
+                            <li>Change management and adoption strategy</li>
+                        </ul>
+                    </div>
+                    <!-- Build -->
+                    <div class="platform-card">
+                        <h3>Build</h3>
+                        <ul style="list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0;">
+                            <li>Workflow automation and integration</li>
+                            <li>Custom AI implementations</li>
+                            <li>Rapid prototyping and MVP development</li>
+                        </ul>
+                    </div>
+                    <!-- Enablement -->
+                    <div class="platform-card">
+                        <h3>Enablement</h3>
+                        <ul style="list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0;">
+                            <li>Team training and upskilling</li>
+                            <li>Vibe-coding workshops</li>
+                            <li>Ongoing support and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="index.html" class="btn btn-secondary">← Back to Home</a>
+        <!-- How We Work -->
+        <section class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How We Work</h2>
+                    <p class="section-lead">Our proven three-step approach delivers measurable results within weeks, not months.</p>
+                </div>
+                <div class="platforms-grid">
+                    <div class="platform-card">
+                        <div style="font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 0.75rem; color: var(--rcm-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">01</div>
+                        <h3>Assess</h3>
+                        <p>1–2 week triage: systems inventory, pain points, metrics, and quick wins identification.</p>
+                    </div>
+                    <div class="platform-card">
+                        <div style="font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 0.75rem; color: var(--rcm-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">02</div>
+                        <h3>Ship</h3>
+                        <p>2–4 week sprint: fix critical issues, link key flows, and prove ROI with clear use-cases.</p>
+                    </div>
+                    <div class="platform-card">
+                        <div style="font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 0.75rem; color: var(--rcm-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">03</div>
+                        <h3>Enable</h3>
+                        <p>Upskill teams, establish governance, and set cadence for ongoing optimization and wins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proof / Outcomes -->
+        <section class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Proven Impact</h2>
+                    <p class="section-lead">We've helped teams reduce manual work by 60%, accelerate content production by 3x, and ship AI-powered features that previously required months of development—all while maintaining quality and security standards.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Our clients see immediate results: streamlined workflows, faster decision-making, and teams that actually enjoy working with AI instead of fighting it. We focus on practical implementations that solve real problems, not theoretical frameworks that gather dust.</p>
+                        <p>From content teams producing high-quality output at scale to executives making data-driven decisions with confidence, R&C delivers the capability you need to compete in an AI-first world.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Start a Conversation</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Tell us what's breaking, what you want to ship, and who needs to be enabled. We'll propose a small, high-impact starting point.
+                </p>
+                <div style="text-align: center;">
+                    <a href="mailto:barry@malestrum.com" class="btn btn-primary" style="display: inline-block; margin: 0 auto;">Email Barry</a>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>R&C Consulting</h4>
+                    <p>Part of Rutherford Creative Media</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h5>RCM Platforms</h5>
+                        <ul>
+                            <li><a href="https://malestrum.com" target="_blank" rel="noopener noreferrer">Malestrum</a></li>
+                            <li><a href="/">Rutherford Creative Media</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#services">Strategy</a></li>
+                            <li><a href="#services">Build</a></li>
+                            <li><a href="#services">Enablement</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rutherford Creative Media — All Rights Reserved. <a href="mailto:barry@malestrum.com">barry@malestrum.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-1759096751.js"></script>
 </body>
 </html>
