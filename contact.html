@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Rutherford Creative Media</title>
+    <meta name="description" content="Get in touch with Rutherford Creative Media. Tell us what you're building and we'll reply within 1-2 business days.">
+    <meta property="og:title" content="Contact — Rutherford Creative Media">
+    <meta property="og:description" content="Get in touch with Rutherford Creative Media">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rutherfordcreativemedia.com/contact">
+    <meta property="og:image" content="https://rutherfordcreativemedia.com/og-image.jpg">
+    <meta property="og:site_name" content="Rutherford Creative Media">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rutherfordcm">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://rutherfordcreativemedia.com/contact">
+    <link rel="stylesheet" href="styles.css?v=1759096751">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="favicon-16x16.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon-32x32.svg">
+    <link rel="shortcut icon" href="favicon.svg">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Primary">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <span class="brand-text">Rutherford Creative Media</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#our-platforms" class="nav-link">Projects</a></li>
+                <li><a href="/rc-consulting.html" class="nav-link">R&C</a></li>
+                <li><a href="/#works" class="nav-link">Works</a></li>
+                <li><a href="/#team" class="nav-link">Team</a></li>
+                <li><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-expanded="false" aria-controls="primary-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+        <!-- Contact Hero -->
+        <section class="contact-section">
+            <div class="container">
+                <h1>Contact</h1>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Tell us what you're building. We'll reply within 1–2 business days.
+                </p>
+
+
+                <!-- Contact Form -->
+                <div class="form-grid">
+                    <form id="contact-form">
+                        <!-- Honeypot field -->
+                        <div class="honeypot">
+                            <label for="website">Website (leave blank)</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="field">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" class="input" required aria-describedby="fullname-help">
+                            <div id="fullname-help" class="help">Your first and last name</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="input" required aria-describedby="email-help">
+                            <div id="email-help" class="help">We never share your email.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="textarea" required minlength="10"
+                                      aria-describedby="message-help" placeholder="Tell us about your project, goals, or how we can help..."></textarea>
+                            <div id="message-help" class="help">Please provide some details about what you're working on</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h4>Rutherford Creative Media</h4>
+                    <p>Where leadership meets storytelling</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h5>Platforms</h5>
+                        <ul>
+                            <li><a href="https://malestrum.com" target="_blank" rel="noopener noreferrer">Malestrum</a></li>
+                            <li><a href="/rc-consulting.html">Rutherford & Company</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="/#works">Works</a></li>
+                            <li><a href="/#team">About</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rutherford Creative Media — All Rights Reserved. <a href="mailto:info@rutherfordcreativemedia.com">info@rutherfordcreativemedia.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-1759096751.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formGrid = document.querySelector('.form-grid');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                // Remove any existing alerts
+                const existingAlert = document.querySelector('.alert');
+                if (existingAlert) {
+                    existingAlert.remove();
+                }
+
+                // Get form data
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('fullname'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                    website: formData.get('website')
+                };
+
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.ok) {
+                        // Show success message
+                        const alertDiv = document.createElement('div');
+                        alertDiv.className = 'alert';
+                        alertDiv.tabIndex = -1;
+                        alertDiv.innerHTML = '<strong>Thank you!</strong> Your message has been sent. We\'ll get back to you within 1–2 business days.';
+                        formGrid.parentNode.insertBefore(alertDiv, formGrid);
+                        alertDiv.focus();
+
+                        // Reset form
+                        form.reset();
+                    } else {
+                        throw new Error(result.error || 'Failed to send message');
+                    }
+                } catch (error) {
+                    // Show error message
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert alert-error';
+                    alertDiv.tabIndex = -1;
+                    alertDiv.innerHTML = '<strong>Error:</strong> ' + error.message;
+                    formGrid.parentNode.insertBefore(alertDiv, formGrid);
+                    alertDiv.focus();
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                }
+            });
+        });
+    </script>
+
+    <!-- RCM Chatbot Widget -->
+    <div id="rcm-chat"></div>
+    <script>
+    (function () {
+      const root = document.getElementById("rcm-chat");
+      root.style.cssText = "position:fixed;right:20px;bottom:20px;z-index:9999;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif";
+      root.innerHTML = `
+        <button id="rcm-open" style="padding:.7rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.08);cursor:pointer">
+          💬 Chat
+        </button>
+        <div id="rcm-panel" style="display:none;width:360px;height:520px;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.12);overflow:hidden">
+          <div style="padding:10px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <strong>RCM Assistant</strong>
+          </div>
+          <div id="rcm-log" style="padding:12px;height:400px;overflow:auto;white-space:pre-wrap;font-size:14px;line-height:1.35"></div>
+          <div style="display:flex;gap:8px;padding:10px;border-top:1px solid #eee">
+            <input id="rcm-input" placeholder="Ask about RCM services..." style="flex:1;border:1px solid #ddd;border-radius:12px;padding:.6rem .8rem"/>
+            <button id="rcm-send" style="padding:.6rem .9rem;border-radius:12px;border:1px solid #ddd;background:#fafafa;cursor:pointer">Send</button>
+          </div>
+        </div>
+      `;
+
+      const open = root.querySelector("#rcm-open");
+      const panel = root.querySelector("#rcm-panel");
+      const log = root.querySelector("#rcm-log");
+      const input = root.querySelector("#rcm-input");
+      const send = root.querySelector("#rcm-send");
+
+      open.addEventListener("click", () => {
+        panel.style.display = panel.style.display === "none" ? "block" : "none";
+      });
+
+      const messages = [{ role: "system", content: "You are the helpful assistant for Rutherford Creative Media (RCM). RCM is a creative agency specializing in storytelling and leadership content. We help leaders and organizations tell their stories through various mediums including writing, content strategy, and creative consulting.\n\nKey services include:\n- Leadership storytelling and content creation\n- Creative writing and memoir services\n- Strategic communications consulting\n- Content development for executives and thought leaders\n\nOur platforms include Malestrum (creative works) and Rutherford & Company (consulting services).\n\nFor inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com or use the contact form on the website.\n\nBe helpful, professional, and concise. Focus on how RCM can help with storytelling and leadership communication needs." }];
+
+      async function chat(userText) {
+        messages.push({ role: "user", content: userText });
+
+        const resp = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages, provider: "anthropic" })
+        });
+
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let assistant = { role: "assistant", content: "" };
+        messages.push(assistant);
+
+        const para = document.createElement("div");
+        para.style.marginBottom = "8px";
+        para.innerHTML = `<div><strong>You:</strong> ${userText}</div><div><strong>Claude:</strong> <span class="rcm-stream"></span></div>`;
+        log.appendChild(para);
+        log.scrollTop = log.scrollHeight;
+        const span = para.querySelector(".rcm-stream");
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value);
+          assistant.content += chunk.replace(/^data:\s*/gm, "");
+          span.textContent = assistant.content;
+          log.scrollTop = log.scrollHeight;
+        }
+      }
+
+      send.addEventListener("click", () => {
+        const txt = input.value.trim();
+        if (!txt) return;
+        input.value = "";
+        chat(txt).catch(err => {
+          const e = document.createElement("div");
+          e.style.color = "crimson";
+          e.textContent = "Error: " + err.message;
+          log.appendChild(e);
+        });
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          send.click();
+        }
+      });
+    })();
+    </script>
+</body>
+</html>

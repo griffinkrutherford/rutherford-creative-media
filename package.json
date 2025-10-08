@@ -1,0 +1,18 @@
+{
+  "name": "rutherford-creative-media-website",
+  "version": "1.0.0",
+  "description": "Rutherford Creative Media website with contact form backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@sendgrid/mail": "^7.7.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

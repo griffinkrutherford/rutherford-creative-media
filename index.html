@@ -41,6 +41,7 @@
                 <li><a href="/rc-consulting.html" class="nav-link">R&C</a></li>
                 <li><a href="#works" class="nav-link">Works</a></li>
                 <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="/contact.html" class="nav-link">Contact</a></li>
             </ul>
             <button class="hamburger" aria-expanded="false" aria-controls="primary-menu">
                 <span class="bar"></span>
@@ -455,11 +456,11 @@
                         </ul>
                     </div>
                     <div class="footer-section">
-                        <h5>Works</h5>
+                        <h5>Company</h5>
                         <ul>
-                            <li><a href="#works">Fiction</a></li>
-                            <li><a href="#works">Memoir</a></li>
+                            <li><a href="#works">Works</a></li>
                             <li><a href="#team">About</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -471,5 +472,91 @@
     </footer>
 
     <script src="script-1759096751.js" defer></script>
+
+    <!-- RCM Chatbot Widget -->
+    <div id="rcm-chat"></div>
+    <script>
+    (function () {
+      const root = document.getElementById("rcm-chat");
+      root.style.cssText = "position:fixed;right:20px;bottom:20px;z-index:9999;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif";
+      root.innerHTML = `
+        <button id="rcm-open" style="padding:.7rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.08);cursor:pointer">
+          💬 Chat
+        </button>
+        <div id="rcm-panel" style="display:none;width:360px;height:520px;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.12);overflow:hidden">
+          <div style="padding:10px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <strong>RCM Assistant</strong>
+          </div>
+          <div id="rcm-log" style="padding:12px;height:400px;overflow:auto;white-space:pre-wrap;font-size:14px;line-height:1.35"></div>
+          <div style="display:flex;gap:8px;padding:10px;border-top:1px solid #eee">
+            <input id="rcm-input" placeholder="Ask about RCM services..." style="flex:1;border:1px solid #ddd;border-radius:12px;padding:.6rem .8rem"/>
+            <button id="rcm-send" style="padding:.6rem .9rem;border-radius:12px;border:1px solid #ddd;background:#fafafa;cursor:pointer">Send</button>
+          </div>
+        </div>
+      `;
+
+      const open = root.querySelector("#rcm-open");
+      const panel = root.querySelector("#rcm-panel");
+      const log = root.querySelector("#rcm-log");
+      const input = root.querySelector("#rcm-input");
+      const send = root.querySelector("#rcm-send");
+
+      open.addEventListener("click", () => {
+        panel.style.display = panel.style.display === "none" ? "block" : "none";
+      });
+
+      const messages = [{ role: "system", content: "You are the helpful assistant for Rutherford Creative Media (RCM). RCM is a creative agency specializing in storytelling and leadership content. We help leaders and organizations tell their stories through various mediums including writing, content strategy, and creative consulting.\n\nKey services include:\n- Leadership storytelling and content creation\n- Creative writing and memoir services\n- Strategic communications consulting\n- Content development for executives and thought leaders\n\nOur platforms include Malestrum (creative works) and Rutherford & Company (consulting services).\n\nFor inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com or use the contact form on the website.\n\nBe helpful, professional, and concise. Focus on how RCM can help with storytelling and leadership communication needs." }];
+
+      async function chat(userText) {
+        messages.push({ role: "user", content: userText });
+
+        const resp = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages, provider: "anthropic" })
+        });
+
+        const reader = resp.body.getReader();
+        const decoder = new TextDecoder();
+        let assistant = { role: "assistant", content: "" };
+        messages.push(assistant);
+
+        const para = document.createElement("div");
+        para.style.marginBottom = "8px";
+        para.innerHTML = `<div><strong>You:</strong> ${userText}</div><div><strong>Claude:</strong> <span class="rcm-stream"></span></div>`;
+        log.appendChild(para);
+        log.scrollTop = log.scrollHeight;
+        const span = para.querySelector(".rcm-stream");
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value);
+          assistant.content += chunk.replace(/^data:\s*/gm, "");
+          span.textContent = assistant.content;
+          log.scrollTop = log.scrollHeight;
+        }
+      }
+
+      send.addEventListener("click", () => {
+        const txt = input.value.trim();
+        if (!txt) return;
+        input.value = "";
+        chat(txt).catch(err => {
+          const e = document.createElement("div");
+          e.style.color = "crimson";
+          e.textContent = "Error: " + err.message;
+          log.appendChild(e);
+        });
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          send.click();
+        }
+      });
+    })();
+    </script>
 </body>
 </html>
