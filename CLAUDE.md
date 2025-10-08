@@ -202,6 +202,7 @@ No build process currently required. Static files served directly.
 
 ---
 
-**Last Updated**: January 2025
-**Railway Deployment**: Active
-**Contact Form**: Fully functional with SendGrid
+**Last Updated**: October 2025
+**Railway Deployment**: Active (Node.js 18 with nixpacks.toml configuration)
+**Contact Form**: Functional with SendGrid (optional configuration)
+**Chatbot**: Active with Claude 3.5 Sonnet
