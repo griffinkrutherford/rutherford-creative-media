@@ -9,11 +9,15 @@
     <meta property="og:description" content="Executive experience meets authentic storytelling.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rutherfordcreativemedia.com/">
-    <meta property="og:image" content="/og-image.jpg">
+    <meta property="og:image" content="https://rutherfordcreativemedia.com/og-image.jpg">
+    <meta property="og:site_name" content="Rutherford Creative Media">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rutherfordcm">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://rutherfordcreativemedia.com/">
+    <link rel="preload" as="image" href="images/cover-photo.webp" type="image/webp">
     <link rel="preload" as="image" href="images/cover-photo.jpg">
     <link rel="stylesheet" href="styles.css?v=1759096751">
 
@@ -24,24 +28,25 @@
     <link rel="shortcut icon" href="favicon.svg">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Primary">
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="brand-text">Rutherford Creative Media</span>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="primary-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#our-platforms" class="nav-link">Projects</a></li>
                 <li><a href="/rc-consulting.html" class="nav-link">R&C</a></li>
                 <li><a href="#works" class="nav-link">Works</a></li>
                 <li><a href="#team" class="nav-link">Team</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" aria-expanded="false" aria-controls="primary-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -65,7 +70,7 @@
         <div class="hero-credit">Photo: Griffin Rutherford, 2025</div>
     </header>
 
-    <main>
+    <main id="main">
         <!-- Quick Links -->
         <section class="platforms-section">
             <div class="container">
@@ -157,7 +162,7 @@
                     <div class="platform-card">
                         <h3>R&amp;C Consulting</h3>
                         <p>Practical AI strategy and implementations: vibe coding, workflow automation, and decision support.</p>
-                        <a href="/rc-consulting" class="platform-link">Learn more</a>
+                        <a href="/rc-consulting.html" class="platform-link">Learn more</a>
                     </div>
                     <!-- Malestrum -->
                     <div class="platform-card">
@@ -190,7 +195,7 @@
                     <div class="rc-tag">Implementation Channel · RCM</div>
                     <h2 class="rc-title">Rutherford & Company</h2>
                     <div class="rc-intro">
-                        <p style="font-weight: bold; font-style: italic;">We turn strategy into shipped capability. R&C is the <strong>implementation arm of Rutherford Creative Media</strong> — blending Barry Rutherford's decades of executive leadership and growth consulting with Griffin Rutherford's Computer Science rigor to deliver practical, durable AI systems that actually work in your day-to-day.</p>
+                        <p><strong><em>We turn strategy into shipped capability. R&C is the implementation arm of Rutherford Creative Media</em></strong> — blending Barry Rutherford's decades of executive leadership and growth consulting with Griffin Rutherford's Computer Science rigor to deliver practical, durable AI systems that actually work in your day-to-day.</p>
                         <p>Our focus: <strong>fix what's not working</strong>, link scattered AI tools into a coherent workflow, enable collaborative AI services across teams, and <strong>teach your people to "vibe-code"</strong> — rapidly iterating with AI assistants to ship real outcomes without waiting on long dev cycles.</p>
                     </div>
                     <div class="rc-ctas">
@@ -446,7 +451,7 @@
                         <h5>Platforms</h5>
                         <ul>
                             <li><a href="https://malestrum.com" target="_blank" rel="noopener noreferrer">Malestrum</a></li>
-                            <li><a href="/rc-consulting">Rutherford & Company</a></li>
+                            <li><a href="/rc-consulting.html">Rutherford & Company</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
@@ -465,6 +470,6 @@
         </div>
     </footer>
 
-    <script src="script-1759096751.js"></script>
+    <script src="script-1759096751.js" defer></script>
 </body>
 </html>
