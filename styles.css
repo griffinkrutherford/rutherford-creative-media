@@ -1236,8 +1236,6 @@ p {
 .honeypot {
     position: absolute;
     left: -9999px;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .alert {
@@ -1254,6 +1252,18 @@ p {
     background: #fee2e2;
     border: 1px solid #ef4444;
     color: #991b1b;
+}
+
+.alert.error {
+    border-color: #f3b3b3;
+    background: #fff6f6;
+    color: #991b1b;
+}
+
+.alert.success {
+    border-color: #b7e1c0;
+    background: #f6fff7;
+    color: #065f46;
 }
 
 .btn {

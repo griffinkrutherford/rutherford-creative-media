@@ -65,10 +65,10 @@
                 <div class="form-grid">
                     <form id="contact-form">
                         <!-- Honeypot field -->
-                        <div class="honeypot">
-                            <label for="website">Website (leave blank)</label>
-                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-                        </div>
+                        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+                        <!-- Timing field -->
+                        <input type="hidden" name="form_ts" id="form_ts">
 
                         <div class="field">
                             <label for="fullname">Full Name</label>
@@ -135,6 +135,9 @@
             const submitBtn = document.getElementById('submit-btn');
             const formGrid = document.querySelector('.form-grid');
 
+            // Set form timestamp
+            document.getElementById('form_ts').value = Date.now();
+
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
@@ -154,8 +157,24 @@
                     name: formData.get('fullname'),
                     email: formData.get('email'),
                     message: formData.get('message'),
-                    website: formData.get('website')
+                    website: formData.get('website'),
+                    form_ts: formData.get('form_ts')
                 };
+
+                // Client-side link check
+                const linkMatches = data.message.match(/(http|www\.)/gi);
+                if (linkMatches && linkMatches.length > 2) {
+                    const alertDiv = document.createElement('div');
+                    alertDiv.className = 'alert error';
+                    alertDiv.tabIndex = -1;
+                    alertDiv.innerHTML = '<strong>Error:</strong> Too many links in message.';
+                    formGrid.parentNode.insertBefore(alertDiv, formGrid);
+                    alertDiv.focus();
+
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    return;
+                }
 
                 try {
                     const response = await fetch('/api/contact', {
@@ -171,21 +190,22 @@
                     if (result.ok) {
                         // Show success message
                         const alertDiv = document.createElement('div');
-                        alertDiv.className = 'alert';
+                        alertDiv.className = 'alert success';
                         alertDiv.tabIndex = -1;
                         alertDiv.innerHTML = '<strong>Thank you!</strong> Your message has been sent. We\'ll get back to you within 1–2 business days.';
                         formGrid.parentNode.insertBefore(alertDiv, formGrid);
                         alertDiv.focus();
 
-                        // Reset form
+                        // Reset form and timestamp
                         form.reset();
+                        document.getElementById('form_ts').value = Date.now();
                     } else {
                         throw new Error(result.error || 'Failed to send message');
                     }
                 } catch (error) {
                     // Show error message
                     const alertDiv = document.createElement('div');
-                    alertDiv.className = 'alert alert-error';
+                    alertDiv.className = 'alert error';
                     alertDiv.tabIndex = -1;
                     alertDiv.innerHTML = '<strong>Error:</strong> ' + error.message;
                     formGrid.parentNode.insertBefore(alertDiv, formGrid);
