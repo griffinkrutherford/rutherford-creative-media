@@ -1967,3 +1967,24 @@ p {
         max-width: 200px;
     }
 }
+
+/* --- R&C page polish --- */
+.hero.rc {
+  /* soft, professional gradient (no image) */
+  position: relative;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(255,255,255,0.08), transparent 60%),
+    linear-gradient(180deg, #0f172a 0%, #111827 60%, #0b1220 100%);
+  color: #fff;
+}
+.hero.rc .hero-text h1 { color:#fff; }
+.hero.rc .hero-tag, .hero.rc .hero-sub { color: #e5e7eb; }
+.hero.rc .btn.btn-primary { background:#fff; color:#0f172a; }
+.hero.rc .btn.btn-secondary { background:transparent; border:1px solid #e5e7eb; color:#e5e7eb; }
+.nav-link.active {
+  border-bottom: 2px solid currentColor;
+}
+
+/* keep R&C sections readable */
+.rc-offerings-section h2, .rc-how-we-work h3, .rc-outcomes h3, .rc-contact h3 { color:#0f172a; }
+.rc-offerings-section .rc-offering-card p strong { font-weight:600; }
