@@ -236,36 +236,46 @@ async function proxyStream(upstreamResponse, res) {
 
 // Chatbot endpoint
 app.post('/api/chat', async (req, res) => {
+    if (req.method !== 'POST') return res.status(405).end();
     try {
-        const { messages = [], provider = 'anthropic', system, temperature = 0.7 } = req.body || {};
-        if (!Array.isArray(messages) || messages.length === 0) {
-            return res.status(400).json({ error: 'messages[] required' });
-        }
+        const { messages = [] } = req.body || {};
 
-        if (provider === 'anthropic') {
-            const upstream = await fetch('https://api.anthropic.com/v1/messages', {
-                method: 'POST',
-                headers: {
-                    'x-api-key': process.env.ANTHROPIC_API_KEY ?? '',
-                    'anthropic-version': '2023-06-01',
-                    'content-type': 'application/json'
+        const userTurns = Array.isArray(messages)
+            ? messages.filter((m) => m && m.role !== 'system')
+            : [];
+
+        const body = {
+            model: 'gpt-4o-mini',
+            temperature: 0.7,
+            messages: [
+                {
+                    role: 'system',
+                    content: 'You are a concise, friendly site assistant for Rutherford Creative Media (RCM). RCM is Barry Rutherford\'s studio for creative work, media projects, and advisory—where five decades of global leadership meet narrative craft. We build stories and systems: from memoir and fiction to modern media platforms and AI-augmented workflows.\n\nKey services include:\n- Leadership storytelling and content creation\n- Creative writing and memoir services\n- Strategic communications consulting\n- Content development for executives and thought leaders\n- Practical AI strategy and implementations\n\nOur platforms include Malestrum (creative works) and Rutherford & Company (consulting services).\n\nFor inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com or use the contact form on the website.\n\nBe helpful, professional, and concise. Focus on how RCM can help with storytelling and leadership communication needs.'
                 },
-                body: JSON.stringify({
-                    model: 'claude-3-5-sonnet-latest',
-                    system: system || 'You are the helpful assistant for Rutherford Creative Media (RCM). RCM is a creative agency specializing in storytelling and leadership content. We help leaders and organizations tell their stories through various mediums including writing, content strategy, and creative consulting.\n\nKey services include:\n- Leadership storytelling and content creation\n- Creative writing and memoir services\n- Strategic communications consulting\n- Content development for executives and thought leaders\n\nOur platforms include Malestrum (creative works) and Rutherford & Company (consulting services).\n\nFor inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com or use the contact form on the website.\n\nBe helpful, professional, and concise. Focus on how RCM can help with storytelling and leadership communication needs.',
-                    temperature,
-                    max_tokens: 2048,
-                    stream: true,
-                    messages: messages.map(m => ({ role: m.role, content: m.content }))
-                })
-            });
-            return proxyStream(upstream, res);
+                ...userTurns,
+            ],
+        };
+
+        const r = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            },
+            body: JSON.stringify(body),
+        });
+
+        if (!r.ok) {
+            const err = await r.text();
+            return res.status(502).json({ error: 'upstream_error', detail: err });
         }
 
-        return res.status(400).json({ error: 'Only Anthropic/Claude provider is supported' });
-    } catch (err) {
-        console.error('Chat API error:', err);
-        res.status(500).json({ error: 'server_error', detail: String(err) });
+        const data = await r.json();
+        const reply = data?.choices?.[0]?.message?.content ?? '';
+        res.status(200).json({ reply });
+    } catch (e) {
+        console.error('Chat API error:', e);
+        res.status(500).json({ error: 'chat_failed' });
     }
 });
 
