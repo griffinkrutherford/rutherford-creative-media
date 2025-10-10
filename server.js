@@ -236,21 +236,21 @@ async function proxyStream(upstreamResponse, res) {
 
 // Health endpoint
 app.get('/api/health', (req, res) => {
-  const hasKey = !!process.env.OPENAI_API_KEY;
+  const hasKey = !!process.env.ANTHROPIC_API_KEY;
   res.json({
     ok: true,
     env: process.env.NODE_ENV || 'development',
     hasKey,
-    model: 'gpt-4o-mini',
+    model: 'claude-3-5-sonnet-latest',
     serverTime: new Date().toISOString()
   });
 });
 
-// Chat endpoint (force Chat Completions; server-side system; robust upstream logs)
+// Chat endpoint (Claude/Anthropic; server-side system; robust upstream logs)
 app.post('/api/chat', express.json(), async (req, res) => {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      console.error('[chat] missing OPENAI_API_KEY');
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('[chat] missing ANTHROPIC_API_KEY');
       return res.status(500).json({ error: 'missing_key' });
     }
 
@@ -261,20 +261,20 @@ app.post('/api/chat', express.json(), async (req, res) => {
     );
 
     const payload = {
-      model: 'gpt-4o-mini',
+      model: 'claude-3-5-sonnet-latest',
+      max_tokens: 2048,
       temperature: 0.7,
-      messages: [
-        { role: 'system', content: 'You are a concise, friendly site assistant for Rutherford & Company.' },
-        ...turns,
-      ],
+      system: 'You are a concise, friendly site assistant for Rutherford Creative Media (RCM). RCM is Barry Rutherford\'s studio for creative work, media projects, and advisory—where five decades of global leadership meet narrative craft. We build stories and systems: from memoir and fiction to modern media platforms and AI-augmented workflows. Our platforms include Malestrum (creative works) and Rutherford & Company (consulting services). For inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com. Be helpful, professional, and concise.',
+      messages: turns.map(m => ({ role: m.role, content: m.content }))
     };
 
-    const upstreamUrl = 'https://api.openai.com/v1/chat/completions';
+    const upstreamUrl = 'https://api.anthropic.com/v1/messages';
     const r = await fetch(upstreamUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json'
       },
       body: JSON.stringify(payload),
     });
@@ -283,7 +283,7 @@ app.post('/api/chat', express.json(), async (req, res) => {
     if (r.ok) {
       let data;
       try { data = JSON.parse(respText); } catch { data = {}; }
-      const reply = data?.choices?.[0]?.message?.content ?? '';
+      const reply = data?.content?.[0]?.text ?? '';
       return res.json({ reply });
     } else {
       // Log upstream details (truncated) for Railway logs
