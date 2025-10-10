@@ -118,6 +118,17 @@ Import from Google Fonts (already included):
 - Ensure all external links open in new tabs
 - Update bio content as projects evolve
 
+## Chatbot Diagnostics (Express)
+1. Railway → Project → **Variables** → set **OPENAI_API_KEY** (no quotes). Save and redeploy.
+2. Visit `/diagnostics.html`:
+   - **GET /api/health** → check `hasKey: true`.
+   - **POST /api/chat** → expect `{ "reply": "..." }`.
+3. If POST returns `{ "error": "upstream_error", "detail": "..." }`:
+   - 401 / Invalid API key → fix OPENAI_API_KEY in Railway.
+   - model not found → update model in server.js (`gpt-4o-mini` is default).
+   - `messages: Unexpected role "system"` → indicates an older code path hitting the Responses API; confirm server.js calls **/v1/chat/completions**.
+4. Contact form uses `mailto:`; set your device default mail account to Gmail so "From" is your Gmail address.
+
 ## Future Enhancements
 
 - Add actual chapter/excerpt content pages

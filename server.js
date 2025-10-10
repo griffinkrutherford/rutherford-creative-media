@@ -234,49 +234,71 @@ async function proxyStream(upstreamResponse, res) {
     res.end();
 }
 
-// Chatbot endpoint
-app.post('/api/chat', async (req, res) => {
-    if (req.method !== 'POST') return res.status(405).end();
-    try {
-        const { messages = [] } = req.body || {};
+// Health endpoint
+app.get('/api/health', (req, res) => {
+  const hasKey = !!process.env.OPENAI_API_KEY;
+  res.json({
+    ok: true,
+    env: process.env.NODE_ENV || 'development',
+    hasKey,
+    model: 'gpt-4o-mini',
+    serverTime: new Date().toISOString()
+  });
+});
 
-        const userTurns = Array.isArray(messages)
-            ? messages.filter((m) => m && m.role !== 'system')
-            : [];
-
-        const body = {
-            model: 'gpt-4o-mini',
-            temperature: 0.7,
-            messages: [
-                {
-                    role: 'system',
-                    content: 'You are a concise, friendly site assistant for Rutherford Creative Media (RCM). RCM is Barry Rutherford\'s studio for creative work, media projects, and advisory—where five decades of global leadership meet narrative craft. We build stories and systems: from memoir and fiction to modern media platforms and AI-augmented workflows.\n\nKey services include:\n- Leadership storytelling and content creation\n- Creative writing and memoir services\n- Strategic communications consulting\n- Content development for executives and thought leaders\n- Practical AI strategy and implementations\n\nOur platforms include Malestrum (creative works) and Rutherford & Company (consulting services).\n\nFor inquiries, direct users to contact Barry Rutherford at barrykarlrutherford@gmail.com or use the contact form on the website.\n\nBe helpful, professional, and concise. Focus on how RCM can help with storytelling and leadership communication needs.'
-                },
-                ...userTurns,
-            ],
-        };
-
-        const r = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-            },
-            body: JSON.stringify(body),
-        });
-
-        if (!r.ok) {
-            const err = await r.text();
-            return res.status(502).json({ error: 'upstream_error', detail: err });
-        }
-
-        const data = await r.json();
-        const reply = data?.choices?.[0]?.message?.content ?? '';
-        res.status(200).json({ reply });
-    } catch (e) {
-        console.error('Chat API error:', e);
-        res.status(500).json({ error: 'chat_failed' });
+// Chat endpoint (force Chat Completions; server-side system; robust upstream logs)
+app.post('/api/chat', express.json(), async (req, res) => {
+  try {
+    if (!process.env.OPENAI_API_KEY) {
+      console.error('[chat] missing OPENAI_API_KEY');
+      return res.status(500).json({ error: 'missing_key' });
     }
+
+    const raw = Array.isArray(req.body?.messages) ? req.body.messages : [];
+    // Only pass user/assistant turns; we inject system here
+    const turns = raw.filter(
+      (m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string'
+    );
+
+    const payload = {
+      model: 'gpt-4o-mini',
+      temperature: 0.7,
+      messages: [
+        { role: 'system', content: 'You are a concise, friendly site assistant for Rutherford & Company.' },
+        ...turns,
+      ],
+    };
+
+    const upstreamUrl = 'https://api.openai.com/v1/chat/completions';
+    const r = await fetch(upstreamUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const respText = await r.text();
+    if (r.ok) {
+      let data;
+      try { data = JSON.parse(respText); } catch { data = {}; }
+      const reply = data?.choices?.[0]?.message?.content ?? '';
+      return res.json({ reply });
+    } else {
+      // Log upstream details (truncated) for Railway logs
+      console.error('[chat] upstream_error', {
+        url: upstreamUrl,
+        status: r.status,
+        statusText: r.statusText,
+        body: respText.slice(0, 1000),
+      });
+      return res.status(502).json({ error: 'upstream_error', detail: respText });
+    }
+  } catch (e) {
+    console.error('[chat] handler_error', e);
+    return res.status(500).json({ error: 'chat_failed' });
+  }
 });
 
 app.listen(PORT, () => {

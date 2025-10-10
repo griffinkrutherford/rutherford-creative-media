@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>RCM Diagnostics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>body{font-family:system-ui,Arial,sans-serif;max-width:720px;margin:40px auto;padding:0 16px}pre{background:#f6f6f6;padding:12px;border-radius:8px;overflow:auto}</style>
+</head>
+<body>
+  <h1>RCM Diagnostics</h1>
+  <p>Quick checks for server config and chat health.</p>
+
+  <h2>1) Health</h2>
+  <button id="btnHealth">GET /api/health</button>
+  <pre id="outHealth">—</pre>
+
+  <h2>2) Chat (Hello)</h2>
+  <button id="btnChat">POST /api/chat</button>
+  <pre id="outChat">—</pre>
+
+  <script>
+    const outHealth = document.getElementById('outHealth');
+    const outChat = document.getElementById('outChat');
+
+    document.getElementById('btnHealth').onclick = async () => {
+      outHealth.textContent = '…';
+      try {
+        const r = await fetch('/api/health');
+        outHealth.textContent = JSON.stringify(await r.json(), null, 2);
+      } catch (e) { outHealth.textContent = String(e); }
+    };
+
+    document.getElementById('btnChat').onclick = async () => {
+      outChat.textContent = '…';
+      try {
+        const r = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ messages: [{ role:'user', content:'Hello' }] })
+        });
+        const txt = await r.text();
+        outChat.textContent = `HTTP ${r.status}\n` + txt;
+      } catch (e) { outChat.textContent = String(e); }
+    };
+  </script>
+</body>
+</html>
