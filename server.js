@@ -282,8 +282,15 @@ app.post('/api/chat', express.json(), async (req, res) => {
     const respText = await r.text();
     if (r.ok) {
       let data;
-      try { data = JSON.parse(respText); } catch { data = {}; }
+      try {
+        data = JSON.parse(respText);
+        console.log('[chat] anthropic_response_structure:', JSON.stringify(data, null, 2));
+      } catch (parseError) {
+        console.error('[chat] json_parse_error:', parseError);
+        data = {};
+      }
       const reply = data?.content?.[0]?.text ?? '';
+      console.log('[chat] extracted_reply:', reply);
       return res.json({ reply });
     } else {
       // Log upstream details (truncated) for Railway logs
