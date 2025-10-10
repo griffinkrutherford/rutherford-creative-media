@@ -149,31 +149,25 @@
                 const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ messages, provider: 'anthropic' })
+                    body: JSON.stringify({ messages })
                 });
 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
                 }
 
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-                let assistant = { role: 'assistant', content: '' };
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                const reply = data.reply || '';
+                const assistant = { role: 'assistant', content: reply };
                 messages.push(assistant);
 
-                // Create assistant message container
-                const messageDiv = addMessageToLog('Claude', '');
-                const contentSpan = messageDiv.querySelector('.rcm-message-content');
-
-                while (true) {
-                    const { value, done } = await reader.read();
-                    if (done) break;
-
-                    const chunk = decoder.decode(value);
-                    assistant.content += chunk.replace(/^data:\\s*/gm, '');
-                    contentSpan.textContent = assistant.content;
-                    log.scrollTop = log.scrollHeight;
-                }
+                // Add assistant response to log
+                addMessageToLog('Assistant', reply);
             } catch (error) {
                 console.error('Chat error:', error);
                 addMessageToLog('System', 'Sorry, the chat is temporarily unavailable. Please email us at barrykarlrutherford@gmail.com');
