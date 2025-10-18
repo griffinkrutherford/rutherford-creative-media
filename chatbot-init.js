@@ -222,14 +222,24 @@
         }
     }
 
-    // Simple markdown renderer
+    // Enhanced markdown renderer
     function renderMarkdown(text) {
         return text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')              // Italic
-            .replace(/`(.*?)`/g, '<code>$1</code>')            // Inline code
-            .replace(/\n/g, '<br>')                            // Line breaks
-            .replace(/- (.*?)(<br>|$)/g, '• $1$2');           // Bullet points
+            // Headers (must be first)
+            .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+            .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+            .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
+            // Links [text](url)
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+            // Bold and italic
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            // Inline code
+            .replace(/`(.*?)`/g, '<code>$1</code>')
+            // Bullet points (before line breaks)
+            .replace(/^- (.*?)$/gm, '• $1')
+            // Line breaks (last)
+            .replace(/\n/g, '<br>');
     }
 
     // HTML escape function

@@ -1478,6 +1478,38 @@ p {
     font-size: 0.85em;
 }
 
+.rcm-message-content h1 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 8px 0 4px 0;
+    color: var(--rcm-accent, #7C93FF);
+}
+
+.rcm-message-content h2 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 6px 0 3px 0;
+    color: var(--rcm-accent, #7C93FF);
+}
+
+.rcm-message-content h3 {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 4px 0 2px 0;
+    color: var(--rcm-accent, #7C93FF);
+}
+
+.rcm-message-content a {
+    color: var(--rcm-accent, #7C93FF);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.rcm-message-content a:hover {
+    color: #5a7cfa;
+    text-decoration: none;
+}
+
 .rcm-chat-input-area {
     display: flex;
     gap: 8px;
