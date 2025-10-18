@@ -96,6 +96,33 @@
         // Global keyboard handler
         document.addEventListener('keydown', handleGlobalKeydown);
 
+        // Enhanced markdown renderer
+        function renderMarkdown(text) {
+            return text
+                // Headers (must be first)
+                .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+                .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+                .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
+                // Links [text](url)
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+                // Bold and italic
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                // Inline code
+                .replace(/`(.*?)`/g, '<code>$1</code>')
+                // Bullet points (before line breaks)
+                .replace(/^- (.*?)$/gm, '• $1')
+                // Line breaks (last)
+                .replace(/\n/g, '<br>');
+        }
+
+        // HTML escape function
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+
         function toggleChat() {
             if (isOpen) {
                 closeChat();
@@ -220,33 +247,6 @@
             log.scrollTop = log.scrollHeight;
             return messageDiv;
         }
-    }
-
-    // Enhanced markdown renderer
-    function renderMarkdown(text) {
-        return text
-            // Headers (must be first)
-            .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
-            .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
-            .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
-            // Links [text](url)
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-            // Bold and italic
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            // Inline code
-            .replace(/`(.*?)`/g, '<code>$1</code>')
-            // Bullet points (before line breaks)
-            .replace(/^- (.*?)$/gm, '• $1')
-            // Line breaks (last)
-            .replace(/\n/g, '<br>');
-    }
-
-    // HTML escape function
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML.replace(/\n/g, '<br>');
     }
 
     function showFallbackMessage() {
