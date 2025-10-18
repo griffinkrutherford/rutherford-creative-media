@@ -38,7 +38,17 @@
                     <h2 id="rcm-chat-title">RCM Assistant</h2>
                     <button id="rcm-chat-close" class="rcm-chat-close" aria-label="Close chat">×</button>
                 </div>
-                <div id="rcm-chat-log" class="rcm-chat-log" role="log" aria-live="polite" aria-atomic="false"></div>
+                <div id="rcm-chat-log" class="rcm-chat-log" role="log" aria-live="polite" aria-atomic="false">
+                    <div class="rcm-quick-start">
+                        <div class="rcm-quick-start-label">Quick start:</div>
+                        <div class="rcm-quick-buttons">
+                            <button class="rcm-quick-btn" data-message="What is RCM?">What is RCM?</button>
+                            <button class="rcm-quick-btn" data-message="Tell me about Barry's writing">Barry's Writing</button>
+                            <button class="rcm-quick-btn" data-message="What is Malestrum?">Malestrum</button>
+                            <button class="rcm-quick-btn" data-message="How can Rutherford & Company help?">AI Consulting</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="rcm-chat-input-area">
                     <label for="rcm-chat-input" class="rcm-visually-hidden">Type your message</label>
                     <input id="rcm-chat-input" class="rcm-chat-input" placeholder="Ask about RCM services..." type="text" autocomplete="off">
@@ -72,6 +82,16 @@
         closeBtn.addEventListener('click', closeChat);
         sendBtn.addEventListener('click', sendMessage);
         input.addEventListener('keydown', handleKeydown);
+
+        // Quick start button listeners
+        const quickBtns = root.querySelectorAll('.rcm-quick-btn');
+        quickBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const message = btn.getAttribute('data-message');
+                input.value = message;
+                sendMessage();
+            });
+        });
 
         // Global keyboard handler
         document.addEventListener('keydown', handleGlobalKeydown);
@@ -180,16 +200,43 @@
         }
 
         function addMessageToLog(sender, content) {
+            // Hide quick start buttons after first message
+            const quickStart = log.querySelector('.rcm-quick-start');
+            if (quickStart) {
+                quickStart.style.display = 'none';
+            }
+
             const messageDiv = document.createElement('div');
             messageDiv.className = 'rcm-message';
+
+            // Render markdown for assistant messages
+            const renderedContent = sender === 'Assistant' ? renderMarkdown(content) : escapeHtml(content);
+
             messageDiv.innerHTML = `
                 <div class="rcm-message-sender">${sender}:</div>
-                <div class="rcm-message-content">${content}</div>
+                <div class="rcm-message-content">${renderedContent}</div>
             `;
             log.appendChild(messageDiv);
             log.scrollTop = log.scrollHeight;
             return messageDiv;
         }
+    }
+
+    // Simple markdown renderer
+    function renderMarkdown(text) {
+        return text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')              // Italic
+            .replace(/`(.*?)`/g, '<code>$1</code>')            // Inline code
+            .replace(/\n/g, '<br>')                            // Line breaks
+            .replace(/- (.*?)(<br>|$)/g, '• $1$2');           // Bullet points
+    }
+
+    // HTML escape function
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML.replace(/\n/g, '<br>');
     }
 
     function showFallbackMessage() {

@@ -1402,6 +1402,49 @@ p {
     scroll-behavior: smooth;
 }
 
+/* Quick start buttons */
+.rcm-quick-start {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.rcm-quick-start-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.rcm-quick-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.rcm-quick-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.rcm-quick-btn:hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+}
+
+.rcm-quick-btn:focus {
+    outline: 2px solid var(--rcm-accent, #7C93FF);
+    outline-offset: 1px;
+}
+
 .rcm-message {
     margin-bottom: 12px;
     word-wrap: break-word;
@@ -1415,7 +1458,24 @@ p {
 
 .rcm-message-content {
     color: var(--rcm-text, #111);
-    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.rcm-message-content strong {
+    font-weight: 600;
+    color: var(--rcm-accent, #7C93FF);
+}
+
+.rcm-message-content em {
+    font-style: italic;
+}
+
+.rcm-message-content code {
+    background: #f1f3f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.85em;
 }
 
 .rcm-chat-input-area {
