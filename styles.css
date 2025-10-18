@@ -793,6 +793,13 @@ p {
     margin-bottom: 1rem;
 }
 
+/* Ensure bio section strong elements aren't blue */
+.bio-focus strong,
+.bio-interests strong {
+    color: var(--rcm-text);
+    font-weight: 600;
+}
+
 /* Contact Section */
 .contact-section {
     background: var(--rcm-surface);
