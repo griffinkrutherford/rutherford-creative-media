@@ -784,6 +784,13 @@ p {
 .bio-focus {
     font-size: 0.95rem;
     color: var(--rcm-text);
+    margin-bottom: 1rem;
+}
+
+.bio-interests {
+    font-size: 0.95rem;
+    color: var(--rcm-text);
+    margin-bottom: 1rem;
 }
 
 /* Contact Section */
